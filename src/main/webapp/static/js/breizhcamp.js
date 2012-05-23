@@ -29,3 +29,14 @@ function initTalkOnTalkPage(id_talk) {
     }
 }
 
+
+/* Gestion des talks favoris sur la page calendar. */
+function initFavorisOnCalendar(talks) {
+    $.each( talks, function(k, id_talk){
+        var key = 'talk' + id_talk;
+        if (localStorage[key] == "true") {
+            $("#" + id_talk).html($("#" + id_talk).html() + " <i class='icon-star'></i>");
+        }
+    });
+
+}
