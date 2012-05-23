@@ -1,0 +1,38 @@
+html {
+    background: url('/static/BreizhCamp.png') no-repeat top center;
+}
+body {
+    margin-top:350px;
+    margin-left:10px;
+    margin-right:10px;
+    margin-bottom:70px;
+}
+fieldset {
+    padding:10px;
+}
+.baspage {
+    margin-bottom:35px;
+}
+h2 {
+    font-family: 'Sonsie One', cursive;
+    margin-top:50px;
+    text-align: center;
+    font-size:60px;
+}
+h3 {
+    font-family: 'Sonsie One', cursive;
+    text-align: center;
+    font-size:30px;
+}
+
+.table-striped tbody tr:nth-child(odd) td.favorite {
+    background-color: #f6ef2b;
+}
+
+.table-striped tbody tr td.favorite {
+    background-color: #f6ef2b;
+}
+
+.table-striped tbody tr:hover  td.favorite {
+    background-color: #f6ef2b;
+}

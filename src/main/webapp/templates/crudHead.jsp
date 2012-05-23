@@ -1,30 +1,18 @@
-  <style type="text/css">
-   body {
-     margin-top:10px;
-     margin-left:10px;
-     margin-right:10px;
-     margin-bottom:70px;
-   }
-   h2 {
-     font-family: 'Sonsie One', cursive;
-     margin-top:50px;
-     text-align: center;
-     font-size:60px;
-   }
-    h3 {
-     font-family: 'Sonsie One', cursive;
-     text-align: center;
-     font-size:30px;
-   }
-    .baspage {
-        margin-bottom:35px;
+<style type="text/css">
+    html {
+        background: none;
     }
-  </style>
-         <script type='text/javascript' charset='utf-8'>
-                  function setActive(id){
-                       document.getElementById(id).className='active';
-                  }
-         </script>
+
+    body {
+        margin-top:10px;
+    }
+</style>
+
+<script type='text/javascript' charset='utf-8'>
+    function setActive(id){
+    document.getElementById(id).className='active';
+    }
+</script>
 
 <!-- Onglets -->
 <ul class="nav nav-tabs">
@@ -35,9 +23,6 @@
   <li id="programme"><a href="/crud/programme/index.htm">Programme</a></li>
 
 </ul>
-
-<!-- Liens de navigations -->
-
 
 <!-- Liens de navigation -->
 <div style="position: fixed;top:2px;right:10px">

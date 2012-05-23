@@ -4,8 +4,6 @@
 <%@ taglib prefix="custo" uri="/WEB-INF/custom-functions.tld" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 
-<script type='text/javascript' src='/static/js/breizhcamp.js'></script>
-
 <script type='text/javascript' charset='utf-8'>
      $(document).ready(function() {
          setActive('programme');

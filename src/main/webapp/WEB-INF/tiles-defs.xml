@@ -111,8 +111,7 @@
     </definition>
 
     <definition name=".mainTemplateie" template="/templates/mainie.jsp">
-        <put-attribute name="title" value="Il y a plein d'autre navigateurs !" type="string" />
-        <put-attribute name="header" value="/templates/headie.jsp" />
+        <put-attribute name="title" value="Il y a plein d'autres navigateurs !" type="string" />
         <put-attribute name="content" value="/templates/blank.jsp" />
     </definition>
     <definition name="error/notie" extends=".mainTemplateie">
