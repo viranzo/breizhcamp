@@ -51,6 +51,12 @@ public class IndexController {
         return "contact";
     }
 
+    @RequestMapping("/bookmarks.htm")
+    public String bookmarks(ModelMap model, @RequestParam(defaultValue = "false") boolean hide) {
+        model.put("hide", hide);
+        return "bookmarks";
+    }
+
     @RequestMapping(value = "/event.json", method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
     public Event event() {

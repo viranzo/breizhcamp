@@ -69,7 +69,7 @@
             'gotoDate',
             <fmt:formatDate value="${date}" type="both" pattern="yyyy" />,
             <fmt:formatDate value="${date}" type="both" pattern="MM" /> - 1,
-             <fmt:formatDate value="${date}" type="both" pattern="dd" />);
+            <fmt:formatDate value="${date}" type="both" pattern="dd" />);
 
         <c:forEach var="talk" items="${talks[date]}" varStatus="status">
             talks.push(${talk.id});

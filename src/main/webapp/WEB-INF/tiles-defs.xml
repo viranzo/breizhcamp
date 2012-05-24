@@ -22,8 +22,12 @@
     </definition>
 
     <definition name="contact" extends=".mainTemplate">
-            <put-attribute name="content" value="/views/contact.jsp" />
-        </definition>
+        <put-attribute name="content" value="/views/contact.jsp" />
+    </definition>
+
+    <definition name="bookmarks" extends=".mainTemplate">
+        <put-attribute name="content" value="/views/bookmarks.jsp" />
+    </definition>
 
     <definition name="speakers" extends=".mainTemplate">
         <put-attribute name="content" value="/views/speakers.jsp" />
