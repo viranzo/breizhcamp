@@ -70,25 +70,25 @@ function initFavorisOnCalendar(talks) {
 }
 
 /* Gestion de la page des Bookmarks. */
-
-function initBookmarksPage() {
-    loadJsonTalks();
-}
-
 function loadJsonTalks() {
+    console.log('talks loading...');
+    $.ajaxSetup({'async': false});
     $.getJSON('talks.json?time=' + (new Date().getTime()), function (data) {
         data.sort(sortByDateStart);
         var i = 0; // pas d'utilisation de talk.id en cle, pour ne pas perdre le sort
         $.each(data, function (key, talk) {
             talks[i++] = talk;
         });
-        loadBookmarksPage();
-	}).error(function() { $('#bookmarks-page-content').html("une erreur est survenue au chargement des talks"); })
+        console.log('talks loaded');
+	}).error(function() { console.log("une erreur est survenue au chargement des talks"); })
 	;
+	$.ajaxSetup({'async': true});
 }
 
 function loadBookmarksPage() {
     var content = "";
+
+    loadJsonTalks();
 
     $.each(talks, function (key, talk) {
         if (localStorage['talk' + talk.id] == "true") {
@@ -117,3 +117,28 @@ function sortByDateStart(a, b){
   return ((aStart < bStart) ? -1 : ((aStart > bStart) ? 1 : 0));
 }
 
+
+function loadMobileProgramme() {
+    var content = "";
+
+    loadJsonTalks();
+
+    $.each(talks, function (key, talk) {
+        start =  new Date(talk.start);
+        minutes = start.getMinutes();
+        if (minutes <= 0) minutes = "00";
+        content += "<li><a href='/talk/"+ talk.id +".htm'>";
+        content += "Le " + start.getDate() + " à " + start.getHours() + ":" + minutes  + " - ";
+        content += talk.room + " - " + talk.title;
+        if (localStorage['talk' + talk.id] == "true") {
+            content += " <img src='/static/img/etoile_pleine.png'>";
+        }
+        content += " </a></li>"
+    });
+
+    if (content == "") {
+        content += "Erreur lors du chargement des talks";
+    }
+
+    $('#mobileProgramme').html(content);
+}

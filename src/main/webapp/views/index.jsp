@@ -78,11 +78,13 @@
         </c:forEach>
 
         initFavorisOnCalendar(talks);
+        loadMobileProgramme();
 
     });
 
 </script>
 
+<div class="hide_mobile">
 <c:forEach var="date" items="${dates}">
     <fieldset>
         <legend><spring:message code="programme.title" text="default text" /> <fmt:formatDate value="${date}" type="both" pattern="dd/MM/yyyy" /></legend>
@@ -91,5 +93,7 @@
 </c:forEach>
 <fieldset  class="span${fn:length(rooms)*2+2} baspage" >
 </fieldset>
+</div>
 
+<div id="mobileProgramme" class="version_mobile"></div>
 
