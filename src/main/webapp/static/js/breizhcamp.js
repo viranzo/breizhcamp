@@ -47,10 +47,11 @@ function initFavoris() {
 function initTalkOnTalkPage(id_talk) {
     var key = 'talk' + id_talk;
     if (localStorage[key] == "true") {
-        $('#talk').html("Ce talk fait partie de vos favoris");
+        $('#talk').html("Ce talk fait partie de vos favoris <img src='/static/img/etoile_pleine.png' />");
+
         $('#talk').addClass('btn-success');
     } else {
-        $('#talk').html("Ce talk ne fait pas partie de vos favoris");
+        $('#talk').html("Ce talk ne fait pas partie de vos favoris <img src='/static/img/etoile_vide.png' />");
         $('#talk').removeClass('btn-success');
     }
 }
@@ -61,7 +62,7 @@ function initFavorisOnCalendar(talks) {
     $.each( talks, function(k, id_talk){
         var key = 'talk' + id_talk;
         if (localStorage[key] == "true") {
-            $("#" + id_talk).html($("#" + id_talk).html() + " <i class='icon-star'></i>");
+            $("#talk-fav-" + id_talk).html($("#talk-fav-" + id_talk).html() + " <img src='/static/img/etoile_pleine.png' title='Ce talk est un de vos talks favoris' />");
         }
     });
 
