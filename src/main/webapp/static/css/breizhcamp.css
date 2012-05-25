@@ -103,7 +103,7 @@ h3 {
      }
 
      #footer {
-        position: relative!important;
+        position: static!important;
      }
      /* Un message personnalisé */
      body:before {
