@@ -59,11 +59,11 @@ function initTalkOnTalkPage(id_talk) {
 
 
 /* Gestion des talks favoris sur la page calendar. */
-function initFavorisOnCalendar(talks) {
-    $.each( talks, function(k, id_talk){
-        var key = 'talk' + id_talk;
+function initFavorisOnCalendar() {
+    $.each( talks, function(k, talk){
+        var key = 'talk' + talk.id;
         if (localStorage[key] == "true") {
-            $("#talk-fav-" + id_talk).html($("#talk-fav-" + id_talk).html() + " <img src='/static/img/etoile_pleine.png' title='Ce talk est un de vos talks favoris' />");
+            $("#talk-fav-" + talk.id).html($("#talk-fav-" + talk.id).html() + " <img src='/static/img/etoile_pleine.png' title='Ce talk est un de vos talks favoris' />");
         }
     });
 

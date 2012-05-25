@@ -19,9 +19,8 @@
         var d = <fmt:formatDate value="${date}" type="both" pattern="d" />;
         var m = <fmt:formatDate value="${date}" type="both" pattern="MM" /> - 1;
         var y = <fmt:formatDate value="${date}" type="both" pattern="yyyy" />;
-        var talks = [];
 
-		$('#calendar<fmt:formatDate value="${date}" type="both" pattern="ddMMyyyy" />').fullCalendar({
+        $('#calendar<fmt:formatDate value="${date}" type="both" pattern="ddMMyyyy" />').fullCalendar({
             defaultView: 'agendaDay',
             slotMinutes: 15,
             header: {
@@ -72,14 +71,9 @@
             <fmt:formatDate value="${date}" type="both" pattern="yyyy" />,
             <fmt:formatDate value="${date}" type="both" pattern="MM" /> - 1,
             <fmt:formatDate value="${date}" type="both" pattern="dd" />);
-
-        <c:forEach var="talk" items="${talks[date]}" varStatus="status">
-            talks.push(${talk.id});
         </c:forEach>
 
-        </c:forEach>
-
-        initFavorisOnCalendar(talks);
+        initFavorisOnCalendar();
 
     });
 
