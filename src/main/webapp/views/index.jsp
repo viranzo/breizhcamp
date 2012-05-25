@@ -9,6 +9,8 @@
 <script type='text/javascript' src='static/js/fullcalendar.js'></script>
 
 <script type='text/javascript' charset='utf-8'>
+    loadMobileProgramme();
+
     setActive('programme');
 
     $(document).ready(function() {
@@ -78,7 +80,6 @@
         </c:forEach>
 
         initFavorisOnCalendar(talks);
-        loadMobileProgramme();
 
     });
 
