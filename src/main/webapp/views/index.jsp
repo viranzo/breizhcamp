@@ -9,11 +9,14 @@
 <script type='text/javascript' src='static/js/fullcalendar.js'></script>
 
 <script type='text/javascript' charset='utf-8'>
-    loadMobileProgramme();
+
 
     setActive('programme');
 
     $(document).ready(function() {
+
+        loadMobileProgramme();
+
         <c:forEach var="date" items="${dates}">
 
         var d = <fmt:formatDate value="${date}" type="both" pattern="d" />;
@@ -90,5 +93,5 @@
 </fieldset>
 </div>
 
-<div id="mobileProgramme" class="version_mobile"></div>
+<div id="mobileProgramme" class="version_mobile">DDD</div>
 
