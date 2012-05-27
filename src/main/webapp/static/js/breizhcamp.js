@@ -135,10 +135,8 @@ function loadMobileProgramme(vBookmarksOnly) {
     $.each(talks, function (key, talk) {
 
         if (bookmarksOnly &&  localStorage['talk' + talk.id] != "true") {
-            console.log('HOP ' + talk.id);
             return true; // equivalent to 'continue' with a normal for loop
         }
-        console.log('HO' + talk.id);
         start =  new Date(talk.start);
         minutes = start.getMinutes();
         if (minutes <= 0) minutes = "00";
