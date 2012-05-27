@@ -139,6 +139,5 @@ function loadMobileProgramme() {
     if (content == "") {
         content += "Erreur lors du chargement des talks";
     }
-    console.log('HOP' + content);
     $('#mobileProgramme').html(content);
 }

@@ -37,9 +37,6 @@ h3 {
     background-color: #f6ef2b;
 }
 
-.version_mobile {
-    display: none !important;
-}
 
 @media (max-width: 640px) {
 
@@ -91,15 +88,6 @@ h3 {
      element1, element2 {
        float: none !important;
        width: auto !important
-     }
-
-     /* masquer les éléments superflus */
-     .hide_mobile {
-       display: none !important;
-     }
-
-     .version_mobile {
-         display: block !important;
      }
 
      #footer {

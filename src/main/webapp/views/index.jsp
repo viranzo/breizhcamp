@@ -82,7 +82,7 @@
 
 </script>
 
-<div class="hide_mobile">
+<div class="hidden-phone">
 <c:forEach var="date" items="${dates}">
     <fieldset>
         <legend><spring:message code="programme.title" text="default text" /> <fmt:formatDate value="${date}" type="both" pattern="dd/MM/yyyy" /></legend>
@@ -93,5 +93,5 @@
 </fieldset>
 </div>
 
-<div id="mobileProgramme" class="version_mobile">DDD</div>
+<div id="mobileProgramme" class="visible-phone"></div>
 
