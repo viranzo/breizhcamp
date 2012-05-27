@@ -133,11 +133,22 @@ function loadMobileProgramme(vBookmarksOnly) {
     $('#linesMobile').html("");
 
     $.each(talks, function (key, talk) {
-
         if (bookmarksOnly &&  localStorage['talk' + talk.id] != "true") {
             return true; // equivalent to 'continue' with a normal for loop
         }
         start =  new Date(talk.start);
+
+        if (day == "") {
+            day = start.getDate();
+        }
+
+        if (day != start.getDate()) {
+            lineMobile($('#linesMobile'), oldStart, content, day, firstLine);
+            day = start.getDate();
+            firstLine = false;
+            content = "";
+        }
+
         minutes = start.getMinutes();
         if (minutes <= 0) minutes = "00";
         content += "<li><a href='/talk/"+ talk.id +".htm'>";
@@ -153,16 +164,8 @@ function loadMobileProgramme(vBookmarksOnly) {
         }
         content += " </a></li>";
 
-        if (day == "") {
-            day = start.getDate();
-        }
+        oldStart =  new Date(talk.start);
 
-        if (day != start.getDate()) {
-            day = start.getDate();
-            lineMobile($('#linesMobile'), start, content, day, firstLine);
-            firstLine = false;
-            content = "";
-        }
     });
 
     lineMobile($('#linesMobile'), start, content, day, firstLine);
@@ -192,6 +195,7 @@ function btnFavoris() {
 }
 
 function lineMobile(root, startDate, content, day, firstLine) {
+    console.log('Enter ' + day);
     var html = ""
     var first = "";
     var firstHeight = "0px";
