@@ -208,7 +208,7 @@ function lineMobile(root, startDate, content, day, firstLine) {
 
     html += '<div class="accordion-group">';
     html += '<div class="accordion-heading">';
-    html += '<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse' + day + '">';
+    html += '<a class="accordion-toggle" data-toggle="collapse" data-parent="#linesMobile" href="#collapse' + day + '">';
     html += title;
     html += '</a>';
     html += '</div>';

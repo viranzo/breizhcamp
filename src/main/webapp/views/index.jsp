@@ -79,8 +79,6 @@
         </c:forEach>
 
         initFavorisOnCalendar();
-        $("#accordion2").collapse()
-
     });
 
 </script>
