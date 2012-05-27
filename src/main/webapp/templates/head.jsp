@@ -3,10 +3,10 @@
 <!-- Onglets -->
 <ul class="nav  nav-tabs">
     <li id="programme"><a href="/index.htm">Programme</a></li>
+    <li id="bookmarks" class="hidden-phone"><a href="/bookmarks.htm">Favoris</a></li>
     <li id="speakers"><a href="/speakers.htm">Speakers</a></li>
-    <li id="bookmarks"><a href="/bookmarks.htm">Mes Favoris</a></li>
-    <li id="github"><a href="https://github.com/BreizhJUG/breizhcamp" target="_blank">GitHub</a></li>
-    <li id="breizhjug"><a href="http://www.breizhjug.org/" target="_blank">BreizhJug</a></li>
+    <li id="github" class="hidden-phone"><a href="https://github.com/BreizhJUG/breizhcamp" target="_blank">GitHub</a></li>
+    <li id="breizhjug" class="hidden-phone"><a href="http://www.breizhjug.org/" target="_blank">BreizhJug</a></li>
     <li id="contact"><a href="/contact.htm">Contact</a></li>
 </ul>
 

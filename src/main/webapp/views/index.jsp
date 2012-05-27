@@ -5,6 +5,7 @@
 <%@ taglib uri="/WEB-INF/custom-functions.tld" prefix="custo" %>
 
 <link rel='stylesheet' type='text/css' href='static/css/fullcalendar.css' />
+<script type='text/javascript' src='/static/js/bootstrap.js'></script>
 <script type='text/javascript' src='/static/js/breizhcamp.js'></script>
 <script type='text/javascript' src='static/js/fullcalendar.js'></script>
 
@@ -15,7 +16,8 @@
 
     $(document).ready(function() {
 
-        loadMobileProgramme();
+        loadMobileProgramme(false);
+        btnFavoris();
 
         <c:forEach var="date" items="${dates}">
 
@@ -77,6 +79,7 @@
         </c:forEach>
 
         initFavorisOnCalendar();
+        $("#accordion2").collapse()
 
     });
 
@@ -93,5 +96,15 @@
 </fieldset>
 </div>
 
-<div id="mobileProgramme" class="visible-phone"></div>
+<div id="mobileProgramme" class="visible-phone">
+
+    <button id="favOnly" class="btn" href="#">Afficher vos favoris</button>
+    <div id='mobileMsg'></div>
+
+    <div class="accordion" id="accordion2">
+        <div class="accordion-group" id="linesMobile">
+
+        </div>
+    </div>
+</div>
 

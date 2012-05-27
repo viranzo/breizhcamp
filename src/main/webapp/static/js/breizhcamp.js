@@ -1,4 +1,5 @@
 var talks = {};
+var bookmarksOnly = false;
 
 /* Pourquoi encore utiliser IE ?. */
 NavName = navigator.appName;
@@ -118,26 +119,106 @@ function sortByDateStart(a, b){
 }
 
 
-function loadMobileProgramme() {
+/** Programme version Mobile. */
+function loadMobileProgramme(vBookmarksOnly) {
     var content = "";
+    bookmarksOnly = vBookmarksOnly;
+    $('#mobileMsg').html("");
 
     loadJsonTalks();
 
+    var day = "";
+    var firstLine = true;
+
+    $('#linesMobile').html("");
+
     $.each(talks, function (key, talk) {
+
+        if (bookmarksOnly &&  localStorage['talk' + talk.id] != "true") {
+            console.log('HOP ' + talk.id);
+            return true; // equivalent to 'continue' with a normal for loop
+        }
+        console.log('HO' + talk.id);
         start =  new Date(talk.start);
         minutes = start.getMinutes();
         if (minutes <= 0) minutes = "00";
         content += "<li><a href='/talk/"+ talk.id +".htm'>";
-        content += "Le " + start.getDate() + " à " + start.getHours() + ":" + minutes  + " - ";
-        content += talk.room + " - " + talk.title;
+        content += start.getHours() + "h" + minutes  + " - ";
+
+        if (talk.room != null) {
+            content += talk.room;
+        }
+        content +=  " - " + talk.title;
+
         if (localStorage['talk' + talk.id] == "true") {
             content += " <img src='/static/img/etoile_pleine.png'>";
         }
-        content += " </a></li>"
+        content += " </a></li>";
+
+        if (day == "") {
+            day = start.getDate();
+        }
+
+        if (day != start.getDate()) {
+            day = start.getDate();
+            lineMobile($('#linesMobile'), start, content, day, firstLine);
+            firstLine = false;
+            content = "";
+        }
     });
 
-    if (content == "") {
-        content += "Erreur lors du chargement des talks";
+    lineMobile($('#linesMobile'), start, content, day, firstLine);
+
+    if (content == "" && bookmarksOnly) {
+        $('#mobileMsg').html("Vous n'avez pas (encore) positionné de talks favoris.");
+        $('#linesMobile').html("");
+    } else if (content == "") {
+        content = "Erreur lors du chargement des talks";
+        $('#mobileProgramme').html(content);
     }
-    $('#mobileProgramme').html(content);
+}
+
+function btnFavoris() {
+    $('#favOnly').click(function() {
+
+        loadMobileProgramme(bookmarksOnly==false)
+
+        if (bookmarksOnly == false) {
+            $('#favOnly').html("Afficher vos favoris");
+
+        } else {
+            $('#favOnly').html("Afficher tout");
+
+        }
+    });
+}
+
+function lineMobile(root, startDate, content, day, firstLine) {
+    var html = ""
+    var first = "";
+    var firstHeight = "0px";
+    var title = "Le " + startDate.getDate() + "/" + (startDate.getMonth() + 1) + "/" + startDate.getFullYear();
+
+    if (firstLine) {
+        first = "in";
+        firstHeight = "auto";
+    }
+
+    html += '<div class="accordion-group">';
+    html += '<div class="accordion-heading">';
+    html += '<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse' + day + '">';
+    html += title;
+    html += '</a>';
+    html += '</div>';
+    html += '<div id="collapse' + day + '" class="accordion-body '+first+' collapse" style="height: ' + firstHeight + '; ">';
+
+    html += '<div class="accordion-inner">';
+    html += '<ul class="nav nav-list">';
+    html += content;
+    html += '</ul>'
+    html += '</div>';
+    html += '</div>';
+    html += '</div>';
+
+    root.append(html);
 }
