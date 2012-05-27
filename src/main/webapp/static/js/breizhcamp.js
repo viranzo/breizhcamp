@@ -97,7 +97,7 @@ function loadBookmarksPage() {
             minutes = start.getMinutes();
             if (minutes <= 0) minutes = "00";
             content += "<li><a href='/talk/"+ talk.id +".htm'>";
-            content += "Le " + start.getDate() + " à " + start.getHours() + ":" + minutes  + " - ";
+            content += "Le " + start.getDate() + " à " + start.getUTCHours() + ":" + minutes  + " - ";
             content += talk.room + " - " + talk.title;
             content += " </a></li>"
         }
@@ -152,7 +152,7 @@ function loadMobileProgramme(vBookmarksOnly) {
         minutes = start.getMinutes();
         if (minutes <= 0) minutes = "00";
         content += "<li><a href='/talk/"+ talk.id +".htm'>";
-        content += start.getHours() + "h" + minutes  + " - ";
+        content += start.getUTCHours() + "h" + minutes  + " - ";
 
         if (talk.room != null) {
             content += talk.room;
