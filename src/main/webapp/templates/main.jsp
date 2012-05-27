@@ -8,7 +8,6 @@
     <link href="/static/css/bootstrap-responsive.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Sonsie+One' rel='stylesheet' type='text/css'>
     <link type="text/css" href="/static/css/breizhcamp.css" rel="stylesheet" >
-
     <script src="/static/js/jquery-1.7.1.min.js"></script>
     <script src="/static/js/jquery-ui-1.8.18.custom.min.js"></script>
     <script src="/static/js/jquery.ui.datepicker-fr.js"></script>
@@ -22,12 +21,21 @@
 <body>
     <c:if test="${hide!=true}">
 	    <tiles:insertAttribute name="header" />
-	</c:if>
+     </c:if>
 	<c:if test="${hide==true}">
         <script type='text/javascript' charset='utf-8'>
             function setActive(id){
             }
         </script>
+        <style type="text/css">
+            html {
+                background: none;
+            }
+
+            body {
+                margin-top:10px;
+            }
+        </style>
 	</c:if>
 	<tiles:insertAttribute name="content" />
 
