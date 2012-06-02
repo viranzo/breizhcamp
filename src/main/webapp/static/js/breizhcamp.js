@@ -161,21 +161,22 @@ function loadMobileProgramme(vBookmarksOnly) {
             console.log(hours);
         }
 
-        content += "<li class='row-fluid'>";
+        content += "<div class='row-fluid'>";
         if (hours != null) {
-            content += '<div>'+hours+'</div>';
+            content += '<div class="span1"></div>';
+            content += '<div class="span1">'+hours+'</div>';
         }
-        content += "<div class='span1'><a href='/talk/"+ talk.id +".htm'>";
+        content += "<div class='span4'><a href='/talk/"+ talk.id +".htm'>";
 
         if (talk.room != null) {
-            content += talk.room;
+            content += talk.room + " - ";
         }
-        content +=  " - " + talk.title;
+        content += talk.title;
 
         if (localStorage['talk' + talk.id] == "true") {
             content += " <img src='/static/img/etoile_pleine.png'>";
         }
-        content += " </a><div></li>";
+        content += " </a><br/><br/><div><div>";
 
         oldStart =  new Date(talk.start);
         oldHours =  start.getUTCHours();
