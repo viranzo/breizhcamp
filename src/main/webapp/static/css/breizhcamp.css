@@ -49,6 +49,7 @@ h3 {
        width: auto;
        margin: 0px !important;
        padding: 0px !important;
+       font: 17px arial, verdana, sans-serif;
      }
 
      .span6, .span8 {
@@ -95,7 +96,7 @@ h3 {
      }
      /* Un message personnalisé */
      body:before {
-       content: "Version mobile du site";
+       content: "Mobile";
        display: block;
        color: #777;
        text-align: center;

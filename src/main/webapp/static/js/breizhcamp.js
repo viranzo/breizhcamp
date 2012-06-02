@@ -75,7 +75,7 @@ function loadJsonTalks() {
     console.log('talks loading...');
     $.ajaxSetup({'async': false});
     $.getJSON('talks.json?time=' + (new Date().getTime()), function (data) {
-        data.sort(sortByDateStart);
+        data.sort(sortByDateStartAndRoom);
         var i = 0; // pas d'utilisation de talk.id en cle, pour ne pas perdre le sort
         $.each(data, function (key, talk) {
             talks[i++] = talk;
@@ -112,10 +112,11 @@ function loadBookmarksPage() {
     $('#bookmarks-page-content').html(content);
 }
 
-function sortByDateStart(a, b){
+function sortByDateStartAndRoom(a, b){
   var aStart = a.start;
   var bStart = b.start;
-  return ((aStart < bStart) ? -1 : ((aStart > bStart) ? 1 : 0));
+  //return ((aStart < bStart) ? -1 : ((aStart > bStart) ? 1 : 0));
+  return ((aStart < bStart) ? -1 : ((aStart > bStart) ? 1 : ((a.room > b.room) ? 1 : 0) ));
 }
 
 
@@ -128,11 +129,14 @@ function loadMobileProgramme(vBookmarksOnly) {
     loadJsonTalks();
 
     var day = "";
+    var oldHours = null;
     var firstLine = true;
+    var hours = null;
 
     $('#linesMobile').html("");
 
     $.each(talks, function (key, talk) {
+
         if (bookmarksOnly &&  localStorage['talk' + talk.id] != "true") {
             return true; // equivalent to 'continue' with a normal for loop
         }
@@ -143,7 +147,7 @@ function loadMobileProgramme(vBookmarksOnly) {
         }
 
         if (day != start.getDate()) {
-            lineMobile($('#linesMobile'), oldStart, content, day, firstLine);
+            lineMobile($('#linesMobile'), oldStart, content, day, firstLine, hours);
             day = start.getDate();
             firstLine = false;
             content = "";
@@ -151,8 +155,17 @@ function loadMobileProgramme(vBookmarksOnly) {
 
         minutes = start.getMinutes();
         if (minutes <= 0) minutes = "00";
-        content += "<li><a href='/talk/"+ talk.id +".htm'>";
-        content += start.getUTCHours() + "h" + minutes  + " - ";
+
+        if (oldHours != start.getUTCHours()) {
+            hours = start.getUTCHours() + "h" + minutes;
+            console.log(hours);
+        }
+
+        content += "<li class='row-fluid'>";
+        if (hours != null) {
+            content += '<div>'+hours+'</div>';
+        }
+        content += "<div class='span1'><a href='/talk/"+ talk.id +".htm'>";
 
         if (talk.room != null) {
             content += talk.room;
@@ -162,13 +175,16 @@ function loadMobileProgramme(vBookmarksOnly) {
         if (localStorage['talk' + talk.id] == "true") {
             content += " <img src='/static/img/etoile_pleine.png'>";
         }
-        content += " </a></li>";
+        content += " </a><div></li>";
 
         oldStart =  new Date(talk.start);
+        oldHours =  start.getUTCHours();
+        hours = null;
 
     });
 
-    lineMobile($('#linesMobile'), start, content, day, firstLine);
+    // last line
+    lineMobile($('#linesMobile'), start, content, day, firstLine, hours);
 
     if (content == "" && bookmarksOnly) {
         $('#mobileMsg').html("Vous n'avez pas (encore) positionné de talks favoris.");
