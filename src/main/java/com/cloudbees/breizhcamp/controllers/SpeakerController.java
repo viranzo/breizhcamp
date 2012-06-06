@@ -1,5 +1,6 @@
 package com.cloudbees.breizhcamp.controllers;
 
+import com.cloudbees.breizhcamp.dao.impl.SpeakerDao;
 import com.cloudbees.breizhcamp.domain.Speaker;
 import com.cloudbees.breizhcamp.services.ScheduleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.net.URL;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -32,6 +34,12 @@ public class SpeakerController {
 	public Speaker get(@PathVariable long id) {
 		return scheduleService.getSpeaker(id);
 	}
+
+    @RequestMapping(value = "/speaker/picture/{id}.jpg", method = RequestMethod.GET)
+    public String picture(@PathVariable long id) {
+        Speaker speaker =scheduleService.getSpeaker(id);
+        return "redirect:"+speaker.getPicture();
+    }
 
     @RequestMapping(value = "/speaker/{id}.htm", method = RequestMethod.GET)
     public String speaker(ModelMap model,@PathVariable long id,@RequestParam(defaultValue = "false") boolean hide) {

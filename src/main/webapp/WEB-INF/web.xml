@@ -36,6 +36,10 @@
 		<servlet-name>breizhcamp</servlet-name>
 		<url-pattern>*.htm</url-pattern>
 	</servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>breizhcamp</servlet-name>
+        <url-pattern>*.jpg</url-pattern>
+    </servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>breizhcamp</servlet-name>
 		<url-pattern>*.json</url-pattern>
