@@ -2,10 +2,10 @@ var talks = {};
 var bookmarksOnly = false;
 
 /* Pourquoi encore utiliser IE ?. */
-NavName = navigator.appName;
+/*NavName = navigator.appName;
 if ( NavName == "Microsoft Internet Explorer") {
     window.location="/error/notie.htm";
-}
+}*/
 
 /* Gestion du konami code.*/
 jQuery(function() {
