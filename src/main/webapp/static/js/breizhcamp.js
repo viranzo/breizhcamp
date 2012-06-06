@@ -1,6 +1,18 @@
 var talks = {};
 var bookmarksOnly = false;
 
+var alertFallback = false;
+   if (typeof console === "undefined" || typeof console.log === "undefined") {
+     console = {};
+     if (alertFallback) {
+         console.log = function(msg) {
+              alert(msg);
+         };
+     } else {
+         console.log = function() {};
+     }
+   }
+
 /* Pourquoi encore utiliser IE ?. */
 /*NavName = navigator.appName;
 if ( NavName == "Microsoft Internet Explorer") {
